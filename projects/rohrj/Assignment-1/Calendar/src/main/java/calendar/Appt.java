@@ -176,8 +176,9 @@ public class Appt{
 		else if (startYear <= 0)
 			this.valid = false;
 		else {
-			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);
-			if (startDay < 1 || startDay > NumDaysInMonth)
+            int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);
+            // if (startDay < 1 || startDay > NumDaysInMonth)
+			if (startDay > 1 || startDay > NumDaysInMonth)
 				this.valid = false;
 			else
 				this.valid = true;
@@ -291,7 +292,8 @@ public class Appt{
      * @return True if this appointment has a time set. Otherwise false.
      */
     public boolean hasTimeSet() {
-        return (getStartHour() != NO_TIME);
+        //return (getStartHour() != NO_TIME);
+        return (getStartHour() == NO_TIME);
     } 
     /**
      * Sets the recurring information with the correct information
@@ -367,7 +369,8 @@ public class Appt{
         {
             printableHour = 12;
         }
-        String represntationApp= printableHour +":"+ getStartMinute() + half;
+        // String represntationApp= printableHour +":"+ getStartMinute() + half;
+        String represntationApp= getStartMinute() +":"+ printableHour + half;
         return represntationApp;
     	
     }
@@ -378,7 +381,7 @@ public class Appt{
 		    System.err.println("\tThis appointment is not valid");
 		}
          String day= this.getStartMonth()+"/"+this.getStartDay()+"/"+this.getStartYear() + " at ";
-        return "\t"+ day +  this.represntationApp()  + " ," +  getTitle()+ ", "+  getDescription()+"\n";
+        return "\t"+ day +  this.represntationApp()  + ", " +  getTitle()+ ", "+  getDescription()+"\n";
     }
 
 

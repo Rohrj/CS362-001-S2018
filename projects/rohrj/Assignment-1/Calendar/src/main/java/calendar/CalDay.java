@@ -222,10 +222,12 @@ public class CalDay {
 				//figure AM/PM notation
 				hour = appointment.getStartHour();
 				if(hour>12){
-					meridianString = "PM";
+					// meridianString = "PM";
+					meridianString = "AM";
 				}
 				else{
-					meridianString = "AM";	
+					// meridianString = "AM";
+					meridianString = "PM";	
 				}
 				
 				//convert from 24 to 12 hour time
