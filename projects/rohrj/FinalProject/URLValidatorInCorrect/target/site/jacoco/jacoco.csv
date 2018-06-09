@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+URLValidatorInCorrect,finalprojectB,DomainValidator.ArrayType,89,0,0,0,9,0,2,0,2,0
+URLValidatorInCorrect,finalprojectB,InetAddressValidator,220,25,63,1,57,7,34,4,2,4
+URLValidatorInCorrect,finalprojectB,RegexValidator,151,105,28,14,34,22,21,8,4,4
+URLValidatorInCorrect,finalprojectB,ResultPair,9,0,0,0,4,0,1,0,1,0
+URLValidatorInCorrect,finalprojectB,DomainValidator.new Object() {...},61,0,0,0,1,0,1,0,1,0
+URLValidatorInCorrect,finalprojectB,DomainValidator.IDNBUGHOLDER,10,0,0,0,3,0,2,0,2,0
+URLValidatorInCorrect,finalprojectB,DomainValidator,250,6314,59,24,75,48,49,16,6,12
+URLValidatorInCorrect,finalprojectB,UrlValidator,114,323,43,43,41,83,43,18,4,14

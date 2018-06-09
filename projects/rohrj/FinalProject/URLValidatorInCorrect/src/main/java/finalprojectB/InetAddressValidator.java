@@ -1,4 +1,4 @@
-/*
+ /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
@@ -65,7 +65,7 @@ public class InetAddressValidator implements Serializable {
      * @return the singleton instance of this validator
      */
     public static InetAddressValidator getInstance() {
-    	return null;
+    	return null; // BUG: VALIDATOR to null
     }
 
     /**
@@ -85,7 +85,7 @@ public class InetAddressValidator implements Serializable {
     public boolean isValidInet4Address(String inet4Address) {
         // verify that address conforms to generic IPv4 format
         String[] groups = ipv4Validator.match(inet4Address);
-       if (groups != null) {
+        if (groups != null) {  // BUG == to !=
             return false;
         }
 

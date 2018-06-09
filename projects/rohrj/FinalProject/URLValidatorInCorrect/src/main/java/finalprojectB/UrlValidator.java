@@ -189,7 +189,7 @@ public class UrlValidator implements Serializable {
     /**
      * If no schemes are provided, default to this set.
      */
-   private static final String[] DEFAULT_SCHEMES = {"http", "https", "ftp"}; // Must be lower-case
+   private static final String[] DEFAULT_SCHEMES = {"http", "https", "ftp", "file"}; // Must be lower-case | Added "file" to list of valid schemes
 
 
 
@@ -279,7 +279,7 @@ public class UrlValidator implements Serializable {
             }
             allowedSchemes = new HashSet<String>(schemes.length);
             for(int i=0; i < schemes.length; i++) {
-                allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH));
+            	allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH)); // BUG: toLowerCase() to toUpperCase()
 
             }
         }
@@ -315,18 +315,18 @@ public class UrlValidator implements Serializable {
 
         String authority = urlMatcher.group(PARSE_URL_AUTHORITY);
 
-        if ("http".equals(scheme)) {// Special case - file: allows an empty authority
-            if (authority != null) {
-                if (authority.contains(":")) { // but cannot allow trailing :
-                    return false;
-                }
-            }
+		if ("http".equals(scheme)) {// Special case - file: allows an empty authority | BUG: file to http
+           if (authority != null) {
+               if (authority.contains(":")) { // but cannot allow trailing :
+                   return false;
+               }
+           }
             // drop through to continue validation
         } else { // not file:
             // Validate the authority
-            if (!isValidAuthority(authority)) {
-                return false;
-            }
+           if (!isValidAuthority(authority)) {
+               return false;
+           }
         }
 
         if (!isValidPath(urlMatcher.group(PARSE_URL_PATH))) {
@@ -416,6 +416,7 @@ public class UrlValidator implements Serializable {
                     // isn't IPv4, so the URL is invalid
                     return false;
                 }
+                System.out.printf(authority + "3\n");
             }
             String port = authorityMatcher.group(PARSE_AUTHORITY_PORT);
             if (port != null && port.length() > 0) {
